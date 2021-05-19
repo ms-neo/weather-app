@@ -1,0 +1,548 @@
+$font-stack :'Public Sans',sans-serif;
+$primary-color: #232222;
+$font-primary-color:#fff;
+$font-secondary-color:#e3e1e1;
+$secondary-color:#888888;
+$heading-font:35px;
+$paragraph-font:18px;
+$font-medium-size:28px;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: $font-stack;
+}
+
+@mixin form {
+    position: relative;
+    height: 101vh;
+
+    .intro {
+        position: absolute;
+        margin: 120px 90px;
+        top: 0;
+        left: 0;
+        width: 70%;
+        padding: 10vh 5vh;
+        background-color: rgba(255, 255, 255, .4);
+
+    }
+
+    h3 {
+        font-weight: 200;
+        color: $font-secondary-color;
+    }
+
+    h2 {
+        font-weight: 700;
+        font-size: 30px;
+        text-shadow: 2px 2px 8px $secondary-color;
+    }
+
+    label {
+        color: $font-primary-color;
+        font-size: $heading-font;
+        text-shadow: 2px 2px 8px $secondary-color;
+    }
+
+    input[type=text] {
+        padding: 10px 20px;
+        margin: 15px 0;
+        border: none;
+        outline: none;
+        width: 70%;
+    }
+
+    input[type=text]:focus {
+        border: 2px solid $secondary-color;
+        outline: $primary-color;
+    }
+
+    button {
+        display: inline-block;
+        border: none;
+        padding: 10px 20px;
+        background: radial-gradient(farthest-side, #242424, #505050);
+        cursor: pointer;
+        border: $primary-color;
+        &:hover {
+            background: $secondary-color;
+            outline: $primary-color;
+        }
+    }
+    .match-list {
+        width: 50px;
+        height: 50px;
+        background-color: $secondary-color;
+    }
+}
+
+.before {
+    @include form;
+   
+    .default-img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        z-index: -4;
+    }
+}
+
+
+.container {
+    height: 101vh;
+    position: relative;
+    overflow: hidden;
+
+
+    .random-quotes {
+        width: 70%;
+        padding: 0 30px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+
+
+
+        .content {
+            padding: 50px 0;
+            color: $font-primary-color;
+            text-align: center;
+        }
+
+        .author {
+            margin-top: 20px;
+            font-size: 16px;
+            color: $font-secondary-color;
+        }
+
+    }
+
+    .img-bg img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -6;
+        object-fit: cover;
+    }
+
+}
+
+.grid {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    color: $font-primary-color;
+}
+
+.first-column {
+    @include form;
+    input[type=text]{
+width: 75%;
+    }
+}
+
+@mixin row-boxes {
+    position: relative;
+    height: 170px;
+
+    p {
+        padding: 70px 0;
+        color: $font-secondary-color;
+    }
+
+}
+
+@mixin line {
+    .line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+    }
+}
+
+.second-column {
+    height: 102vh;
+    background: $primary-color;
+    opacity: 0.9;
+    position: relative;
+    font-size: $font-medium-size;
+    text-align: center;
+    font-size: $paragraph-font;
+
+    .row {
+        height: 101vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .temps {
+        padding-top: 20px;
+        height: 300px;
+        position: relative;
+        @include line;
+    }
+
+    .icon {
+        position: absolute;
+        top: 50px;
+        right: 140px;
+    }
+
+    .r-box {
+        @include row-boxes;
+        @include line;
+    }
+
+    .line-1 {
+        background: #a007ff;
+    }
+
+    .line-2 {
+        background: #07b9ff;
+    }
+
+    .line-3 {
+        background: #f1d608;
+    }
+
+    .line-4 {
+        background: #ff0734;
+    }
+
+    .temp {
+        font-size: $heading-font;
+        margin-top: 50px;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .min-max {
+        padding: 0 12px;
+    }
+
+    hr {
+        border: 1px solid rgb(77, 77, 77);
+    }
+
+    .real-feel {
+        color: $secondary-color;
+        font-size: 400;
+        padding: 1vh;
+    }
+
+    .gray-text {
+        color: #fff;
+        padding: 10px;
+    }
+
+}
+
+
+.fas {
+    color: #fff;
+    padding-right: 3px;
+}
+
+////--------error page -----------// 
+.card {
+    margin: 5% auto;
+    width: 40%;
+    text-align: center;
+
+    .card-body {
+        padding: 50px 0;
+    }
+
+    img {
+        width: 30%;
+    }
+}
+
+//---------------------------PHONE VERSIN ----------------------//
+@media all and (max-width:677px) {
+
+    .container {
+        overflow: visible;
+        .random-quotes {
+            display: block;
+            background: $primary-color;
+            position: static;
+            text-align: center;
+            background: $primary-color;
+            width: 100%;
+
+            .content {
+                padding: 50px 0;
+                color: $font-primary-color;
+                text-align: center;
+                background: $primary-color;
+            }
+
+            .author {
+                margin-top: 20px;
+                font-size: 16px;
+                color: $font-secondary-color;
+            }
+
+        }
+    }
+
+    .grid {
+        
+        height: auto;
+        grid-template-columns: 1fr;
+
+    }
+
+    @mixin form {
+        height: auto;
+
+        .intro {
+            position: static;
+            margin: 100px 30px 188px 30px;
+        }
+
+        h2 {
+            font-size: 25px;
+        }
+
+        label {
+            font-size: $font-medium-size;
+        }
+
+        input[type=text] {
+            padding: 10px 20px;
+            width: 78%;
+            border: none;
+        }
+
+        h3 {
+            font-size: 14px;
+        }
+
+        h2 {
+            font-weight: 700;
+            font-size: 25px;
+        }
+    }
+
+    .first-column {
+        @include form;
+    }
+
+    .before {
+        @include form;
+        height: 100vh;
+        padding-top: 6vh;
+
+        .intro {
+            padding-top: 100px;
+        }
+
+    }
+
+    @mixin row-boxes {
+        width: 115px;
+        p {
+            padding: 20px;
+            margin-top: 60px;
+        }
+    }
+
+    @mixin line {
+        .line {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+        }
+    }
+
+    .second-column {
+        overflow: hidden;
+        height: auto;
+        font-size: 15px;
+        opacity: 1;
+
+        .row {
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: 13px;
+        }
+
+        .r-box {
+            @include row-boxes;
+            @include line;
+        }
+
+        .temps {
+            padding-top: 0px;
+            height: 200px;
+            position: relative;
+            @include line;
+            width: 160px;
+        }
+
+        .temp {
+            font-size: $font-medium-size;
+            margin-top: 40px;
+        }
+
+        .flex {
+
+            margin: 15px 0;
+        }
+
+        .icon {
+            position: absolute;
+            top: 0;
+            left: 60px;
+        }
+
+        .gray-text {
+            color: #fff;
+            padding: 5px;
+        }
+
+        .min-max {
+            padding: 0 8px;
+        }
+    }
+}
+
+.card {
+    margin: 10% auto;
+    width: 80%;
+
+    h1 {
+        font-size: $font-medium-size;
+    }
+
+    .card-body {
+        padding: 50px 0;
+    }
+
+}
+
+@media all and (max-width:375px) {
+    .container{
+        overflow: visible;
+    }
+
+    @mixin form {
+        input[type=text] {
+            padding: 10px 20px;
+            width: 78%;
+            margin: 0 0;
+            border: none;
+        }
+
+        label {
+            font-size: $paragraph-font;
+        }
+
+        h2 {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        button {
+            border: none;
+        }
+    }
+
+    .before {
+        @include form;
+    }
+
+    @mixin row-boxes {
+        width: 100px;
+        p {
+            padding: 15px;
+            margin-top: 60px;
+        }
+    }
+
+    @mixin line {
+        .line {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+        }
+    }
+
+
+    .second-column {
+        overflow: hidden;
+        height: auto;
+        font-size: 15px;
+
+        .row {
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        .r-box {
+            @include row-boxes;
+            @include line;
+        }
+
+        .temps {
+            padding-top: 0px;
+            height: 200px;
+            position: relative;
+            @include line;
+            width: 160px;
+        }
+
+        .temp {
+            font-size: $font-medium-size - 10px;
+            margin-top: 40px;
+        }
+
+        .icon {
+            position: absolute;
+            top: 0;
+            left: 40px;
+        }
+
+        .gray-text {
+            color: #fff;
+            padding: 0;
+        }
+
+        .min-max {
+            padding: 0 8px;
+        }
+    }
+}

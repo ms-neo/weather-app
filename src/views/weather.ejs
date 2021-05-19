@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get the current weather of the city ,view tempreature,wind speed,humidity and more">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>what's the weather today</title>
+</head>
+<body>
+    
+    <% if (data === 0 || data === '') {%>
+    <div class="before">
+        <% const time =new Date().getHours(); %>
+        <% if (time>4 &&time<12) {%>
+        <img class="default-img"
+            src="https://lh3.googleusercontent.com/B9OYx__W_AzzRRRPeZw_xfsgd45N1Eh2-ZzV-hP-F3pnh6k0US1pnhE2pV3rsFWHjWvY2FgL6XBNRn-widK_RPh6hejcdpp9S_1SOR_AT84YSvyP8pCDxtg_CwRPjTbSFTEKpVTjzg=w2400"
+            alt="morning">
+        <% } else if (time >12 && time < 20){ %>
+        <img class="default-img"
+            src="https://lh3.googleusercontent.com/X38yAkfnS15-jTINvNMHIp_H9c71SEqQqWAJgmCWq83-UWy8Wcro35fNJW-X4NI879SzpUXU1jzjhpJY7DTqz1ZWRKF3wxgo1DDWtA29xyvq4UvIcYA_u8oQGssagYeD43hOCWvevg=w2400"
+            alt="morning">
+        <% } else{ %>
+        <img class="default-img"
+            src="https://lh3.googleusercontent.com/hrIwsP76vQ8GWWHgNsfCQIqyjS3UXXHSAyFB_pxYeruywTSuZVXA4myjMCoCRjMvH6Vi8hWb6pP0yWUhvX-Re2ntYkjYfohyi0R4qo4VTjHZVAvYNiTdSuWJ5aDM3Wc61Gjbl0qTeA=w2400"
+            alt="morning">
+        <% }  %>
+        <div class="intro">
+            <form action="/" method="POST" class="form-one">
+                <% if (time>4 &&time<12) {%>
+                <label for="text" class="text">Good Morning , Enter A City Name</label>
+                <% } else if (time >12 && time < 20){ %>
+                <label for="text" class="text">Good Afternoon , Enter A City Name</label>
+                <% } else{ %>
+                <label for="text" class="text">Good Evening , Enter A City Name</label>
+                <% }  %>
+                <h3> <span><%= new Date().toDateString() %></span> </h3>
+                <input type="text" name="cityname" placeholder="search city" class="search-box" required>
+                <button type="submit"><i class="fas fa-search fa-1x"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <% }else if(data !== '') { %>
+    <div class="container">
+        <div class="grid">
+            <div class="first-column">
+                <div class="intro">
+                    <form action="/" method="POST">
+                        <% const time =new Date().getHours() %>
+                        <% if (time<'12') {%>
+                        <% console.log(time) %>
+                        <label for="text" class="text">Good Morning , Enter A City Name</label>
+                        <% } else if (time >13 && time < 20){ %>
+                        <label for="text" class="text">Good Afternoon , Enter A City Name</label>
+                        <% } else{ %>
+                        <label for="text" class="text">Good Evening , Enter A City Name</label>
+                        <% }  %>
+                        <h3> <span><%= new Date().toDateString() %></span> </h3>
+                        <input type="text" name="cityname" placeholder="search city" class="search-box" required>
+                        <button type="submit"><i class="fas fa-search fa-1x"></i></button>
+                    </form>
+                    <h2> <span><%= data.name %></span> , <span><%= data.sys.country %></span> </h2>
+                </div>
+            </div>
+            <div class="second-column">
+                <div class="row">
+                    <div class="temps">
+                        <img class="icon" src="http://openweathermap.org/img/wn/<%=data.weather[0].icon%>.png" alt=""
+                            class="sky">
+                        <% const temp =Math.round(data.main.temp) %>
+                        <p class="temp"><%= temp %>˚</p>
+                        <h4><%= data.weather[0].description %> </h4>
+                        <div class="flex">
+                            <% const tempMin =Math.floor(data.main.temp_min) %>
+                            <p class="min-max"> <i class="fas fa-arrow-down"></i><%= tempMin %>˚ </p>
+                            <% const tempMax =Math.round(data.main.temp_max) %>
+                            <p class="min-max"> <i class="fas fa-arrow-up"></i><%= tempMax %>˚</p>
+                        </div>
+                        <p class="real-feel">Real Feel : <br>
+                            <% const realFeel =Math.round(data.main.feels_like) %>
+                            <span class="gray-text"><%= realFeel %></span>˚ </p>
+                        <div class="line-1 line"></div>
+                    </div>
+                    <hr>
+                    <div class="r-box">
+                        <% const visibility =data.visibility/1000 %>
+                        <p> visibility: <span class="gray-text"><%= visibility %> Km </span></p>
+                        <div class="line-2 line "></div>
+                    </div>
+                    <hr>
+                    <div class="r-box">
+                        <p>Humidity: <span class="gray-text"><%= data.main.humidity %>%</span> </p>
+                        <div class="line-3 line"></div>
+                    </div>
+                    <hr>
+                    <div class="r-box">
+                        <p>Wind Speed: <span class="gray-text"><%= data.wind.speed %> k/m</span> </p>
+                        <div class="line-4 line"></div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="random-quotes">
+            <div class="content">
+                <p> "<%= quotes.quote %>." </p>
+                <p class="author"> <%= quotes.author %> </p>
+            </div>
+        </div>
+        <div class="img-bg">
+            <% const main = data.weather[0].main %>
+            <% switch (main){ case 'Rain': case 'Drizzle': %>
+            <img src="/img/rain.jpg" alt="rain" />
+            <% break;  case 'Clear':  %>
+            <img src="/img/clear.jpg" alt="morning"></img>
+            <% break;  case 'Clouds':  %>
+            <img src="img/clouds.jpg" />
+            <% break;   case 'Snow':  %>
+            <img src="img/snow.jpg" />
+            <% break;   case 'Thunderstorm':  %>
+            <img src="img/thunderstorm.jpg" />
+            <% break;   case 'Mist': case 'Haze': case 'Fog': %>
+            <img src="img/fog.jpg" />
+            <% break;   case 'Sand': case 'Dust': %>
+            <img src="img/storm.jpg" />
+            <% break;  case 'Torando': case 'Squall': %>
+            <img src="img/torando.jpg" />
+            <% break; case 'Ash': case 'Smoke': %>
+            <img src="img/smoke.jpg" />
+            <% break; defaulte; %>
+            <img src="img/night.jpg" alt="">
+            <% }%>
+        </div>
+    </div>
+    <% }%>
